@@ -1,0 +1,29 @@
+.title_container{
+    color: #8a2be2;
+}
+.global_container{
+    display: grid;
+}
+.queries_holder{
+    border-style: dashed;
+    background-color:#ffebcd;
+    width: 400px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.q_resultsholder{
+    border-style: dotted;
+    background-color: #adff2f;
+    width: 300px;
+    height: 150px;
+    margin-top: 25px;
+}
+.chart_holder{
+    margin-top: 25px;
+    border-style: dashed;
+    background-color: #7fffd4;
+    width: 400px;
+    height: 350px;
+}
