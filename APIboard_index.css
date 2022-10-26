@@ -1,24 +1,35 @@
 .title_container{
     color: #8a2be2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end:3;
 }
 .global_container{
     display: grid;
+    grid-template-columns: repeat(3,1fr,1fr);
 }
 .queries_holder{
     border-style: dashed;
     background-color:#ffebcd;
     width: 400px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    height: 350px;
+    display: grid;
+    margin-top: 25px;
+} 
+
+.q_inputholder{
+    height: 25px;
+    width: 400px;
+    margin-top: 50px;
 }
 .q_resultsholder{
     border-style: dotted;
     background-color: #adff2f;
     width: 300px;
     height: 150px;
-    margin-top: 25px;
+    margin-top: 0px;
+    justify-self: center;
 }
 .chart_holder{
     margin-top: 25px;
@@ -26,4 +37,26 @@
     background-color: #7fffd4;
     width: 400px;
     height: 350px;
+}
+#chart_1{
+    background-color: #8a2be2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1; 
+    grid-row-end: 2;
+}
+#chart_2{
+    background-color: #bdb078;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2; 
+    grid-row-end: 3;
+}
+
+#chart_3{
+    background-color: #2abb69;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2; 
+    grid-row-end: 3;
 }
