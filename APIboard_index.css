@@ -46,14 +46,14 @@
     grid-row-end: 2;
 }
 #chart_2{
-    background-color: #bdb078;
+    /* background-color: #bdb078; */
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2; 
     grid-row-end: 3;
 }
 #chart_3{
-    background-color: #2abb69;
+    /* background-color: #2abb69; */
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2; 
@@ -62,5 +62,4 @@
 .chartframe{
     width: 400px;
     height: 350px;
-    background-color: #b8f0d0;
 }
