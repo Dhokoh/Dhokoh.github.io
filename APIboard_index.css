@@ -59,8 +59,8 @@
     grid-row-start: 2; 
     grid-row-end: 3;
 }
-
 .chartframe{
     width: 400px;
     height: 350px;
+    background-color: #b8f0d0;
 }
