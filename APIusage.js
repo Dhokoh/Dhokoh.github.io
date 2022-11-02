@@ -11,7 +11,7 @@ let chart_canvas3 = document.getElementById('chartf3');
 
 
 const render_chart = async (event_id_query, chart_holder) => {
-    const API_global_url = await fetch(nasa_url_globalAPI)
+    const API_global_url = await fetch(nasa_url_globalAPI);
     const extracted_data = await API_global_url.json();
     let NASA_events = extracted_data.events;
     NASA_events.forEach(NASA_events_element => {
@@ -21,7 +21,7 @@ const render_chart = async (event_id_query, chart_holder) => {
             let labels_y_axis = [];
             NASA_API_geometry.forEach(geom_elem => {
                 if (geom_elem.type === 'Point' && geom_elem.magnitudeValue === null){
-                    console.error('El dato que intenta acceder, carece de valores graficables, se mostrará únicamente un gráfico vacío titulado');
+                    console.warn('El dato que intenta acceder, carece de valores graficables, se mostrará únicamente un gráfico vacío titulado');
                 }else{
                     labels_x_axis.push(geom_elem.date);
                     labels_y_axis.push(geom_elem.magnitudeValue);
@@ -49,8 +49,20 @@ const render_chart = async (event_id_query, chart_holder) => {
 
 render_chart('EONET_5730', chart_canvas2);
 render_chart('EONET_6289', chart_canvas1);
-render_chart('EONET_5387', chart_canvas3);
+// render_chart('EONET_5387', chart_canvas3);
 
+let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
+console.log(canvas_array);
+const loadData = (event) => {
+    console.log(event.target.value); 
+    canvas_array.forEach(canvas => {
+        if (canvas.value != null){
+            canvas.clearRect();
+        }else{
+            render_chart(event.target.value, canvas);
+        }
+    })
+}
 
 //Defining query button's behaviour
 // let q_input = document.getElementById('q_input')
