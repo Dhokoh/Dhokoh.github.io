@@ -9,6 +9,8 @@ let chart_canvas1 = document.getElementById('chartf1');
 let chart_canvas2 = document.getElementById('chartf2');
 let chart_canvas3 = document.getElementById('chartf3');
 
+//Defining selection reference
+let chart_selector = document.getElementById('q_input');
 
 const render_chart = async (event_id_query, chart_holder) => {
     const API_global_url = await fetch(nasa_url_globalAPI);
@@ -51,18 +53,42 @@ render_chart('EONET_5730', chart_canvas2);
 render_chart('EONET_6289', chart_canvas1);
 // render_chart('EONET_5387', chart_canvas3);
 
-let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
-console.log(canvas_array);
-const loadData = (event) => {
-    console.log(event.target.value); 
-    canvas_array.forEach(canvas => {
-        if (canvas.value != null){
-            canvas.clearRect();
-        }else{
-            render_chart(event.target.value, canvas);
-        }
+// let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
+// console.log(canvas_array);
+// const loadData = (event) => {
+//     console.log(event.target.value); 
+//     canvas_array.forEach(canvas => {
+//         if (canvas.value != null){
+//             canvas.clearRect(0,0,canvas.width, canvas.height);
+//         }else{
+//             render_chart(event.target.value, canvas);
+//         }
+//     });
+// }
+
+const populateSelection = () => {
+    fetch(nasa_url_globalAPI)
+    .then(api_response => api_response.json())
+    .then(iterable_data => {
+        let event_array = [];
+        iterable_data.events.forEach(event_element => {
+            let event_obj = {
+                id: '',
+                name: ''
+            };
+            event_obj.id = event_element.id;
+            event_obj.name = event_element.title;
+            event_array.push(event_obj);
+        })
+        //console.log(event_array);
+        event_array.forEach(event_object => {
+            console.log(event_object);
+            chart_selector.innerHTML = chart_selector.innerHTML + `
+            <option value = ${event_object.id}>${event_object.name}</option>`;
+        });
     })
 }
+populateSelection();
 
 //Defining query button's behaviour
 // let q_input = document.getElementById('q_input')

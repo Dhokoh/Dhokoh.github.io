@@ -17,7 +17,9 @@
     display: grid;
     margin-top: 25px;
 } 
-
+#q_input{
+    width:400px;
+}
 .q_inputholder{
     height: 25px;
     width: 400px;
