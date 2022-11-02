@@ -2,9 +2,11 @@
 
 Proyecto 3 - APIs, Async - Await y ChartJS. 
 
-División de tareas: 
+División de tareas 
 
-David -  JS
+
+David - JS
+
 Estefanía - 
 Fernando - JS
 Gabriela - 
