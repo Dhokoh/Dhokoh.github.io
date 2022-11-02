@@ -11,11 +11,18 @@ header{
     justify-content: space-around;
     margin-bottom: 20px;
 }
+button{
+    border-radius: 20px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: #00986c;
+    border-color: #00986c;
+}
 div>div{
     border-radius: .5cm;
-    background-color: #ffbba8;
+    background-color: #9ce0db;
     border-style: solid;
-    border-color: #bd4c42;
+    border-color: #005954;
     text-align: center;
     align-items: center;
     justify-content: space-around;
@@ -25,12 +32,11 @@ div>div{
 display: grid;
 grid-template-columns: auto;
 grid-gap: 10px;
-grid-auto-rows: minmax(100px, auto);
-background-color: #fa8072;
+background-color: #338b85;
 border-radius: 0.5cm;
 padding: 50px;
 border-style: solid;
-border-color: #bd4c42;
+border-color: #005954;
 }
 .header {
 grid-column-start: 1;
