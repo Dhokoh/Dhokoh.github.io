@@ -9,8 +9,11 @@ let chart_canvas1 = document.getElementById('chartf1');
 let chart_canvas2 = document.getElementById('chartf2');
 let chart_canvas3 = document.getElementById('chartf3');
 
-//Defining selection reference
+//Defining natural event selection reference
 let chart_selector = document.getElementById('q_input');
+
+//Defining canvas selection reference
+let canvas_selector = document.getElementById('canvas_selector');
 
 const render_chart = async (event_id_query, chart_holder) => {
     const API_global_url = await fetch(nasa_url_globalAPI);
@@ -47,24 +50,8 @@ const render_chart = async (event_id_query, chart_holder) => {
     });
 }
 
-
-
 render_chart('EONET_5730', chart_canvas2);
 render_chart('EONET_6289', chart_canvas1);
-// render_chart('EONET_5387', chart_canvas3);
-
-// let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
-// console.log(canvas_array);
-// const loadData = (event) => {
-//     console.log(event.target.value); 
-//     canvas_array.forEach(canvas => {
-//         if (canvas.value != null){
-//             canvas.clearRect(0,0,canvas.width, canvas.height);
-//         }else{
-//             render_chart(event.target.value, canvas);
-//         }
-//     });
-// }
 
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
@@ -80,67 +67,36 @@ const populateSelection = () => {
             event_obj.name = event_element.title;
             event_array.push(event_obj);
         })
-        //console.log(event_array);
         event_array.forEach(event_object => {
-            console.log(event_object);
             chart_selector.innerHTML = chart_selector.innerHTML + `
             <option value = ${event_object.id}>${event_object.name}</option>`;
         });
     })
 }
+
+//Defining query button's 
+let canvases = [chart_canvas1, chart_canvas2, chart_canvas3];
+
+const draw_chart_action = (canvas_option) => {
+    if (canvas_option){
+        let canvas_ctx = canvas_option.getContext('2d');
+        canvas_ctx.clearRect(0, 0, canvas_option.width, canvas_option.height); 
+    }else{
+        fetch(nasa_url_globalAPI).then(APIresponse => APIresponse.json()).then(iterable_data => {
+            let event_array = [];
+            let chart_selection = canvas_selector.value;
+            iterable_data.events.forEach(event_data => {
+                let event_obj = {
+                    id: '',
+                    name: ''
+                };
+                event_obj.id = event_data.id;
+                event_obj.name = event_data.title;
+                event_array.push(event_obj);
+            })
+        })
+    }
+}
+
 populateSelection();
-
-//Defining query button's behaviour
-// let q_input = document.getElementById('q_input')
-// let q_button = document.getElementById('q_button');
-// q_button.addEventListener('click', (chart_holder)=>{
-//     if (chart_holder.value !== null){
-//         console.warn('El contenedor que intenta usar ya está ocupado.')
-//     }else{
-        
-//     }
-// })
-
-
-
-// const render_chart = async () => {
-//     label_array_y_axis = [];
-//     label_array_x_axis = [];
-//     const APIreader = await fetch(nasa_url_HurricaneRosslyn);
-//     const data = await APIreader.json();
-//     let stormgeometry = data.geometry;
-//     stormgeometry.forEach(elem_ => {
-//         label_array_x_axis.push(elem_.date);
-//         label_array_y_axis.push(elem_.magnitudeValue);
-//     });
-    
-//     //Defining new chart to render
-//     let storm_geometry_chart = new Chart(chart_canvas1, {
-//         type: 'bar',
-//         data: {
-//             labels: label_array_x_axis,
-//             datasets: [{
-//                 label: data.title,
-//                 data: label_array_y_axis,
-//                 backgroundColor: [
-//                     'rbga(10, 80, 35, 0.2)',
-//                     'rbga(67, 90, 55, 0.2)',
-//                     'rbga(21, 73, 35, 0.2)',
-//                     'rbga(15, 97, 125, 0.2)',
-//                     'rbga(25, 80, 150, 0.2)',
-//                     'rbga(34, 73, 55, 0.2)',
-//                     'rbga(23, 180, 135, 0.2)',
-//                     'rbga(67, 125, 135, 0.2)',
-//                     'rbga(34, 180, 135, 0.2)',
-//                     'rbga(20, 210, 79, 0.2)',
-//                     'rbga(77, 67, 44, 0.2)',
-//                     'rbga(12, 210, 235, 0.2)',
-//                     'rbga(55, 165, 35, 0.2)',
-//                     'rbga(21, 100, 99, 0.2)'
-//                 ]
-//             }]
-//         }
-//     });
-// }
-
-//render_chart();
+draw_chart_action();
