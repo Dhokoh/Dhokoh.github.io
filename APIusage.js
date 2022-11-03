@@ -98,10 +98,9 @@ const draw_chart_action = (canvas_option) => {
                 if (chart_selector.value === event_element.name){
                     render_chart(event_element.id, canvas_option)
                 }
-            })
-        }
+            });
+        });
     }
-}
 }
 
 populateSelection();
