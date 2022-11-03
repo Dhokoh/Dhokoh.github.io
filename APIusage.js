@@ -20,14 +20,14 @@ const render_chart = async (event_id_query, chart_holder) => {
     const extracted_data = await API_global_url.json();
     let NASA_events = extracted_data.events;
     NASA_events.forEach(NASA_events_element => {
-        if (event_id_query === NASA_events_element.id){
+        if (event_id_query === NASA_events_element.id) {
             let NASA_API_geometry = NASA_events_element.geometry;
             let labels_x_axis = [];
             let labels_y_axis = [];
             NASA_API_geometry.forEach(geom_elem => {
-                if (geom_elem.type === 'Point' && geom_elem.magnitudeValue === null){
+                if (geom_elem.type === 'Point' && geom_elem.magnitudeValue === null) {
                     console.warn('El dato que intenta acceder, carece de valores graficables, se mostrará únicamente un gráfico vacío titulado');
-                }else{
+                } else {
                     labels_x_axis.push(geom_elem.date);
                     labels_y_axis.push(geom_elem.magnitudeValue);
                 }
@@ -55,33 +55,33 @@ render_chart('EONET_6289', chart_canvas1);
 
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
-    .then(api_response => api_response.json())
-    .then(iterable_data => {
-        let event_array = [];
-        iterable_data.events.forEach(event_element => {
-            let event_obj = {
-                id: '',
-                name: ''
-            };
-            event_obj.id = event_element.id;
-            event_obj.name = event_element.title;
-            event_array.push(event_obj);
-        })
-        event_array.forEach(event_object => {
-            chart_selector.innerHTML = chart_selector.innerHTML + `
+        .then(api_response => api_response.json())
+        .then(iterable_data => {
+            let event_array = [];
+            iterable_data.events.forEach(event_element => {
+                let event_obj = {
+                    id: '',
+                    name: ''
+                };
+                event_obj.id = event_element.id;
+                event_obj.name = event_element.title;
+                event_array.push(event_obj);
+            })
+            event_array.forEach(event_object => {
+                chart_selector.innerHTML = chart_selector.innerHTML + `
             <option value = ${event_object.id}>${event_object.name}</option>`;
-        });
-    })
+            });
+        })
 }
 
 //Defining query button's 
 let canvases = [chart_canvas1, chart_canvas2, chart_canvas3];
 
 const draw_chart_action = (canvas_option) => {
-    if (canvas_option){
+    if (canvas_option) {
         let canvas_ctx = canvas_option.getContext('2d');
-        canvas_ctx.clearRect(0, 0, canvas_option.width, canvas_option.height); 
-    }else{
+        canvas_ctx.clearRect(0, 0, canvas_option.width, canvas_option.height);
+    } else {
         fetch(nasa_url_globalAPI).then(APIresponse => APIresponse.json()).then(iterable_data => {
             let event_array = [];
             let chart_selection = canvas_selector.value;
@@ -94,8 +94,14 @@ const draw_chart_action = (canvas_option) => {
                 event_obj.name = event_data.title;
                 event_array.push(event_obj);
             })
-        })
+            event_array.forEach(event_element => {
+                if (chart_selector.value === event_element.name){
+                    render_chart(event_element.id, canvas_option)
+                }
+            })
+        }
     }
+}
 }
 
 populateSelection();
