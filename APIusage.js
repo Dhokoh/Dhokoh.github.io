@@ -33,7 +33,7 @@ const render_chart = async (event_id_query, chart_holder) => {
                 }
             })
             let chart = new Chart(chart_holder, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: labels_x_axis,
                     datasets: [{
@@ -49,9 +49,6 @@ const render_chart = async (event_id_query, chart_holder) => {
         }
     });
 }
-
-render_chart('EONET_5730', chart_canvas2);
-render_chart('EONET_6289', chart_canvas1);
 
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
@@ -77,31 +74,23 @@ const populateSelection = () => {
 //Defining query button's 
 let canvases = [chart_canvas1, chart_canvas2, chart_canvas3];
 
-const draw_chart_action = (canvas_option) => {
-    if (canvas_option) {
-        let canvas_ctx = canvas_option.getContext('2d');
-        canvas_ctx.clearRect(0, 0, canvas_option.width, canvas_option.height);
-    } else {
-        fetch(nasa_url_globalAPI).then(APIresponse => APIresponse.json()).then(iterable_data => {
-            let event_array = [];
-            let chart_selection = canvas_selector.value;
-            iterable_data.events.forEach(event_data => {
-                let event_obj = {
-                    id: '',
-                    name: ''
-                };
-                event_obj.id = event_data.id;
-                event_obj.name = event_data.title;
-                event_array.push(event_obj);
-            })
-            event_array.forEach(event_element => {
-                if (chart_selector.value === event_element.name){
-                    render_chart(event_element.id, canvas_option)
-                }
-            });
-        });
+const draw_chart_action = () => {
+
+}
+
+const is_empty_canvas = (canvas) => {
+    const empty_canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    if (canvas.toDataURL() === empty_canvas.toDataURL()){
+        return true;
+    }else{
+        return false;
     }
 }
 
+
 populateSelection();
 draw_chart_action();
+//render_chart('EONET_6295', chart_canvas2);
+// render_chart('EONET_6289', chart_canvas1);
+console.log(is_empty_canvas(chart_canvas2));
