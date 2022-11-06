@@ -75,22 +75,22 @@ const populateSelection = () => {
 let canvases = [chart_canvas1, chart_canvas2, chart_canvas3];
 
 const draw_chart_action = () => {
-
+    canvases.forEach(canvas => console.log(canvas.toDataURL()));
 }
 
 const is_empty_canvas = (canvas) => {
-    const empty_canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    if (canvas.toDataURL() === empty_canvas.toDataURL()){
-        return true;
-    }else{
-        return false;
+    let image_data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data
+    let unique_numbers = image_data.filter((v, i, a) => a.indexOf(v) === i);
+
+    console.log(unique_numbers);
+    console.log('There are ' + unique_numbers.length + ' unique numbers inside the canvas data array.');
+
+    if (unique_numbers.length > 1) {
+        console.log('Something is afoot.')
     }
-}
-
-
-populateSelection();
-draw_chart_action();
-//render_chart('EONET_6295', chart_canvas2);
-// render_chart('EONET_6289', chart_canvas1);
-console.log(is_empty_canvas(chart_canvas2));
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    populateSelection();
+    draw_chart_action();
+    render_chart('EONET_6295', chart_canvas2);
+    render_chart('EONET_6289', chart_canvas1);
+    console.log(is_empty_canvas(chart_canvas2));
