@@ -79,18 +79,14 @@ const draw_chart_action = () => {
 }
 
 const is_empty_canvas = (canvas) => {
-    let image_data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data
-    let unique_numbers = image_data.filter((v, i, a) => a.indexOf(v) === i);
-
-    console.log(unique_numbers);
-    console.log('There are ' + unique_numbers.length + ' unique numbers inside the canvas data array.');
-
-    if (unique_numbers.length > 1) {
-        console.log('Something is afoot.')
-    }
+    console.log(canvas);
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     populateSelection();
     draw_chart_action();
     render_chart('EONET_6295', chart_canvas2);
     render_chart('EONET_6289', chart_canvas1);
-    console.log(is_empty_canvas(chart_canvas2));
+    is_empty_canvas(chart_canvas1);
+    is_empty_canvas(chart_canvas2);
+    is_empty_canvas(chart_canvas3);
+    console.log('chart_canvas3 data: ', chart_canvas3.childElementCount);
+    console.log('chart_canvas1 data: ', chart_canvas1.childElementCount);
