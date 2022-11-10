@@ -67,6 +67,7 @@ const loadData = (event) => {
             render_chart(event.target.value, canvas);
         }
     })
+}
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
         .then(api_response => api_response.json())
