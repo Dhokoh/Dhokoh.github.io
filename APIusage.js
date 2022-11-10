@@ -47,9 +47,9 @@ const render_chart = async (event_id_query, chart_holder) => {
 
 
 
-render_chart('EONET_5730', chart_canvas2);
-render_chart('EONET_6289', chart_canvas1);
-// render_chart('EONET_5387', chart_canvas3);
+render_chart('EONET_6298', chart_canvas2);
+render_chart('EONET_6297', chart_canvas1);
+render_chart('EONET_5389', chart_canvas3);
 
 let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
 console.log(canvas_array);
