@@ -17,13 +17,16 @@
         </div>
         <div class="queries_holder">
             <div class="q_inputholder">
-                <label for="q_input">Query goes here</label>
-                <!-- <input id="q_input" type="text"> -->
-                <select onchange="loadData(event)" id="q_input">
-                    <option value="EONET_6289">Typhoon Nalgae</option>
-                    <option value="EONET_5387">Iceberg D29A</option>
+                <label for="q_input">Select natural event</label>
+                <select name="chart_selector" id="q_input">
                 </select>
-                <button id="q_button" class="q_searchbutton">Search button</button>
+                <label for="canvas_selector">Select chart frame</label>
+                <select name="canvas_selector" id="canvas_selector">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <button id="q_button" class="q_searchbutton" onclick="draw_chart_action()">Draw chart!</button>
             </div>
             <div class="q_resultsholder">
                 query results show here.
