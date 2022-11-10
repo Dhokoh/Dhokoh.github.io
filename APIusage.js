@@ -50,6 +50,23 @@ const render_chart = async (event_id_query, chart_holder) => {
     });
 }
 
+
+
+render_chart('EONET_6298', chart_canvas2);
+render_chart('EONET_6297', chart_canvas1);
+render_chart('EONET_5389', chart_canvas3);
+
+let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
+console.log(canvas_array);
+const loadData = (event) => {
+    console.log(event.target.value); 
+    canvas_array.forEach(canvas => {
+        if (canvas.value != null){
+            canvas.clearRect();
+        }else{
+            render_chart(event.target.value, canvas);
+        }
+    })
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
         .then(api_response => api_response.json())
