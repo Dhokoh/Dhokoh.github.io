@@ -18,15 +18,14 @@
         <div class="queries_holder">
             <div class="q_inputholder">
                 <label for="q_input">Query goes here</label>
-                <!-- <input id="q_input" type="text"> -->
-                <select onchange="loadData(event)" id="q_input">
-                    <option value="EONET_6289">Typhoon Nalgae</option>
-                    <option value="EONET_5387">Iceberg D29A</option>
+                <select id="q_input" onchange="drawChart(event)">
                 </select>
-                <button id="q_button" class="q_searchbutton">Search button</button>
-            </div>
-            <div class="q_resultsholder">
-                query results show here.
+                <label for="canvas_selector"></label>
+                <select name="" id="canvas_selector">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
             </div>
         </div>
         <div id="chart_1" class="chart_holder">

@@ -2,12 +2,16 @@
 
 //Defining the NASA API link and storing it
 let nasa_url_globalAPI = 'https://eonet.gsfc.nasa.gov/api/v3/events';
-let nasa_url_HurricaneRosslyn = 'https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6285';
 
 //Defining chart canvas
 let chart_canvas1 = document.getElementById('chartf1');
 let chart_canvas2 = document.getElementById('chartf2');
 let chart_canvas3 = document.getElementById('chartf3');
+
+//Defining canvas containers instances
+let canvas_cont1 = document.getElementById('chart_1');
+let canvas_cont2 = document.getElementById('chart_2');
+let canvas_cont3 = document.getElementById('chart_3');
 
 //Defining natural event selection reference
 let chart_selector = document.getElementById('q_input');
@@ -50,22 +54,12 @@ const render_chart = async (event_id_query, chart_holder) => {
     });
 }
 
-
-
-render_chart('EONET_6298', chart_canvas2);
-render_chart('EONET_6297', chart_canvas1);
-render_chart('EONET_5389', chart_canvas3);
-
 let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
 console.log(canvas_array);
-const loadData = (event) => {
+const drawChart = (event) => {
     console.log(event.target.value); 
     canvas_array.forEach(canvas => {
-        if (canvas.value != null){
-            canvas.clearRect();
-        }else{
-            render_chart(event.target.value, canvas);
-        }
+        render_chart(event.target.value, canvas);
     })
 }
 const populateSelection = () => {
@@ -88,23 +82,8 @@ const populateSelection = () => {
             });
         })
 }
-
-//Defining query button's 
-let canvases = [chart_canvas1, chart_canvas2, chart_canvas3];
-
-const draw_chart_action = () => {
-    canvases.forEach(canvas => console.log(canvas.toDataURL()));
-}
-
-const is_empty_canvas = (canvas) => {
-    console.log(canvas);
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-    populateSelection();
-    draw_chart_action();
-    render_chart('EONET_6295', chart_canvas2);
-    render_chart('EONET_6289', chart_canvas1);
-    is_empty_canvas(chart_canvas1);
-    is_empty_canvas(chart_canvas2);
-    is_empty_canvas(chart_canvas3);
-    console.log('chart_canvas3 data: ', chart_canvas3.childElementCount);
-    console.log('chart_canvas1 data: ', chart_canvas1.childElementCount);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+populateSelection();
+// render_chart('EONET_6298', chart_canvas2);
+// render_chart('EONET_6297', chart_canvas1);
+// render_chart('EONET_5389', chart_canvas3);
