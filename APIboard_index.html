@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,29 +19,33 @@
         <div class="queries_holder">
             <div class="q_inputholder">
                 <label for="q_input">Query goes here</label>
-                <select id="q_input" onchange="drawChart(event)">
+                <!-- <input id="q_input" type="text"> -->
+                <select onchange="loadData(event)" id="q_input">
+                    <option value="EONET_6289">Typhoon Nalgae</option>
+                    <option value="EONET_5387">Iceberg D29A</option>
                 </select>
-                <label for="canvas_selector"></label>
-                <select name="" id="canvas_selector">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
+                <button id="q_button" class="q_searchbutton">Search button</button>
+            </div>
+            <div class="q_resultsholder">
+                query results show here.
             </div>
         </div>
         <div id="chart_1" class="chart_holder">
+            <h5>Chart 1</h5>
             <canvas id="chartf1" class="chartframe">
-                Chart 1
+
             </canvas>
         </div>
         <div id="chart_2" class="chart_holder">
+            <h5>Cart 2</h5>
             <canvas id="chartf2" class="chartframe">
-                Chart 2
+
             </canvas>
         </div>
         <div id="chart_3" class="chart_holder">
+            <h5>Chart 3</h5>
             <canvas id="chartf3" class="chartframe">
-                Chart 3
+ 
             </canvas>
         </div>
         <div id="chart" class="chart">
@@ -54,11 +59,11 @@
               <br>
               <canvas id="pastel"></canvas>
         </div>
+
     </div>
+    <script src="./JS.js"></script>
     <script src="./APIusage.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./JS.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </body>
 
 </html>
