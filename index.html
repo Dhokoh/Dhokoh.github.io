@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -14,6 +13,7 @@
         <div class="cuadro_uno">Cuadro Uno</div>
         <div class="menu">
             <div>
+
                 Pagina 1
                 <button>Overview</button>
             </div>
@@ -26,10 +26,20 @@
             </div >
             Este es el menú
         </div>
-        <div class="cuadro_dos">Cuadro Dos</div>
+        <div class="cuadro_dos">
+            Cuadro Dos
+
+            <div class="chart">
+                <div class="spinner-border" role="status" >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                <canvas id="myChart" width="100px" height="100px"></canvas>
+            </div>
+        </div>
         <div class="cuadro_tres">Cuadro Tres</div>
         <div class="cuadro_cuatro">Cuadro Cuatro</div>
     </div>
     <script src="./JS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </body>
 </html>
