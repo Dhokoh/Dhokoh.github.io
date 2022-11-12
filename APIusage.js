@@ -1,5 +1,3 @@
-// const { Chart } = require("chart.js");
-
 //Defining the NASA API link and storing it
 let nasa_url_globalAPI = 'https://eonet.gsfc.nasa.gov/api/v3/events';
 
@@ -30,7 +28,7 @@ const render_chart = async (event_id_query, chart_holder) => {
             let labels_y_axis = [];
             NASA_API_geometry.forEach(geom_elem => {
                 if (geom_elem.type === 'Point' && geom_elem.magnitudeValue === null) {
-                    console.warn('El dato que intenta acceder, carece de valores graficables, se mostrará únicamente un gráfico vacío titulado');
+                    console.warn('No hay datos graficables, se mostrará únicamente un gráfico vacío titulado');
                 } else {
                     labels_x_axis.push(geom_elem.date);
                     labels_y_axis.push(geom_elem.magnitudeValue);
@@ -54,14 +52,31 @@ const render_chart = async (event_id_query, chart_holder) => {
     });
 }
 
-let canvas_array = [chart_canvas1, chart_canvas2, chart_canvas3]
-console.log(canvas_array);
-const drawChart = (event) => {
-    console.log(event.target.value); 
-    canvas_array.forEach(canvas => {
-        render_chart(event.target.value, canvas);
-    })
-}
+canvas_selector.addEventListener('change', () => {
+    // let canvas_cont_array = [canvas_cont1, canvas_cont2, canvas_cont3];
+    // console.log(canvas_cont1.innerHTML === '');
+    // console.log(canvas_cont2.innerHTML === '');
+    // console.log(canvas_cont3.innerHTML === '');
+    // console.log(canvas_selector.value);
+    // console.log(chart_selector.value);
+    if (canvas_selector.value === '1') {
+        let ctx1 = chart_canvas1.getContext('2d');
+        ctx1.strokeStyle = '#f212aa'
+        ctx1.stroke();
+        render_chart(chart_selector.value, chart_canvas1);
+    }else if (canvas_selector.value === '2'){
+        let ctx2 = chart_canvas2.getContext('2d');
+        ctx2.strokeStyle = '#f212aa'
+        ctx2.stroke();
+        render_chart(chart_selector.value, chart_canvas2);
+    }else if (canvas_selector.value === '3'){
+        let ctx3 = chart_canvas3.getContext('2d');
+        ctx3.strokeStyle = '#f212aa'
+        ctx3.stroke();
+        render_chart(chart_selector.value, chart_canvas3);
+    }
+});
+
 const populateSelection = () => {
     fetch(nasa_url_globalAPI)
         .then(api_response => api_response.json())
@@ -82,8 +97,5 @@ const populateSelection = () => {
             });
         })
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                    
 populateSelection();
-// render_chart('EONET_6298', chart_canvas2);
-// render_chart('EONET_6297', chart_canvas1);
-// render_chart('EONET_5389', chart_canvas3);
