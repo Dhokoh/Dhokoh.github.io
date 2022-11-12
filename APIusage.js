@@ -17,6 +17,9 @@ let chart_selector = document.getElementById('q_input');
 //Defining canvas selection reference
 let canvas_selector = document.getElementById('canvas_selector');
 
+//Defining button reference
+let draw_b = document.getElementById('draw_b');
+
 const render_chart = async (event_id_query, chart_holder) => {
     const API_global_url = await fetch(nasa_url_globalAPI);
     const extracted_data = await API_global_url.json();
@@ -52,13 +55,7 @@ const render_chart = async (event_id_query, chart_holder) => {
     });
 }
 
-canvas_selector.addEventListener('change', () => {
-    // let canvas_cont_array = [canvas_cont1, canvas_cont2, canvas_cont3];
-    // console.log(canvas_cont1.innerHTML === '');
-    // console.log(canvas_cont2.innerHTML === '');
-    // console.log(canvas_cont3.innerHTML === '');
-    // console.log(canvas_selector.value);
-    // console.log(chart_selector.value);
+draw_b.addEventListener('click', () => {
     if (canvas_selector.value === '1') {
         let ctx1 = chart_canvas1.getContext('2d');
         ctx1.strokeStyle = '#f212aa'
