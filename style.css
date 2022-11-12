@@ -64,3 +64,9 @@ grid-row: 4/6;
 grid-column: 3;
 grid-row: 4/6;
 }
+.chart{
+    width: 500px;
+}
+#myChart{
+padding: 20px;
+}
