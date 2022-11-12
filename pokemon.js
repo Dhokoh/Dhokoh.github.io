@@ -1,23 +1,6 @@
 
-let nasa_url_globalAPI = 'https://eonet.gsfc.nasa.gov/api/v3/events';
-let nasa_url_HurricaneRosslyn = 'https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6285';
 let url = 'https://pokeapi.co/api/v2/pokemon'
 let url_dos = 'https://pokeapi.co/api/v2/pokemon/'
-
-//Defining chart canvas
-let chart_canvas1 = document.getElementById('chartf1');
-let chart_canvas2 = document.getElementById('chartf2');
-let chart_canvas3 = document.getElementById('chartf3');
-
-const apinasa = async() =>{
-    const llamada = await fetch(nasa_url_globalAPI);
-    const datos = await llamada.json()
-    let eventos = datos.events
-    console.log(eventos)
-    eventos.forEach(element => {
-        
-    });
-}
 
 const showLoading = () => {
     var loader = document.getElementById("Loader")
@@ -28,7 +11,6 @@ const hideLoading = () => {
     var loader = document.getElementById("Loader")
     loader.style.display = 'none'
 }
-//hola amigos
 const pokeapi = async () => {
     showLoading()
     const llamada = await fetch (url)
@@ -36,7 +18,7 @@ const pokeapi = async () => {
     const lista = []
     const eje_x = []
     const eje_y = []
-        for (let i = 1; i<= 905; i++){
+        for (let i = 1; i<= 20; i++){
         const llamada_dos = await fetch(url_dos+i)
         const data_dos = await llamada_dos.json()
         data_dos.types.forEach(e =>{
