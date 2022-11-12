@@ -28,7 +28,7 @@ const hideLoading = () => {
     var loader = document.getElementById("Loader")
     loader.style.display = 'none'
 }
-
+//hola amigos
 const pokeapi = async () => {
     showLoading()
     const llamada = await fetch (url)
