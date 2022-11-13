@@ -1,15 +1,17 @@
+//const { Chart } = require("chart.js");
+
 //Defining the NASA API link and storing it
 let nasa_url_globalAPI = 'https://eonet.gsfc.nasa.gov/api/v3/events';
-
-//Defining chart canvas
-let chart_canvas1 = document.getElementById('chartf1');
-let chart_canvas2 = document.getElementById('chartf2');
-let chart_canvas3 = document.getElementById('chartf3');
 
 //Defining canvas containers instances
 let canvas_cont1 = document.getElementById('chart_1');
 let canvas_cont2 = document.getElementById('chart_2');
 let canvas_cont3 = document.getElementById('chart_3');
+
+//Defining chart canvas
+let chart_canvas1 = document.getElementById('chartf1');
+let chart_canvas2 = document.getElementById('chartf2');
+let chart_canvas3 = document.getElementById('chartf3');
 
 //Defining natural event selection reference
 let chart_selector = document.getElementById('q_input');
@@ -45,8 +47,10 @@ const render_chart = async (event_id_query, chart_holder) => {
                         label: NASA_events_element.title,
                         data: labels_y_axis,
                         backgroundColor: [
-                            'rgba(220, 88, 77, 0.3)',
-                            'rgba(255, 120, 70, 0.3)',
+                            'rgba(220, 88, 77, 1)',
+                            'rgba(255, 120, 70, 1)',
+                            'rgba(120, 200, 55, 1)',
+                            'rgba(90, 122, 89, 1)'
                         ]
                     }]
                 }
