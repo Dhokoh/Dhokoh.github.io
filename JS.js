@@ -1,6 +1,3 @@
-
-let nasa_url_globalAPI = 'https://eonet.gsfc.nasa.gov/api/v3/events';
-let nasa_url_HurricaneRosslyn = 'https://eonet.gsfc.nasa.gov/api/v3/events/EONET_6285';
 let url = 'https://pokeapi.co/api/v2/pokemon'
 let url_dos = 'https://pokeapi.co/api/v2/pokemon/'
 

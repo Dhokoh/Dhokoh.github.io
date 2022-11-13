@@ -44,6 +44,10 @@ header{
 #q_input{
     width:400px;
 }
+#draw_b{
+    border-radius: 10px;
+    background-color: #7997ea;
+}
 .q_inputholder{
     height: 25px;
     width: 500px;
